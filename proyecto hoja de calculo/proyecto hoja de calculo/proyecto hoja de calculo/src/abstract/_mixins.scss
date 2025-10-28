@@ -1,0 +1,301 @@
+@use "sass:color";
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin gradient-primary {
+    background: linear-gradient(135deg, $primary-color 0%, $accent-color 100%);
+}
+
+@mixin gradient-secondary {
+    background: linear-gradient(135deg, $secondary-color 0%, #3B82F6 100%);
+}
+
+@mixin section-title-after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    @include gradient-primary;
+    border-radius: 2px;
+}
+
+@mixin card-base {
+    background: $white-color;
+    padding: $spacing-lg;
+    border-radius: $border-radius-lg;
+    box-shadow: $shadow-md;
+    text-align: center;
+    transition: $transition-base;
+    animation: fadeInUp 0.6s ease-out;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@mixin dark-mode {
+    body {
+        background: $dark-mode-bg !important;
+        color: $dark-mode-text;
+    }
+
+    .header {
+        background: $dark-mode-header-footer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+        color: $dark-mode-text;
+    }
+
+    .nav-link {
+        color: $dark-mode-text;
+
+        &:hover {
+            background: rgba($white-color, 0.1);
+        }
+        &.active {
+            background: rgba($white-color, 0.15);
+        }
+    }
+
+    .menu-toggle {
+        color: $dark-mode-text;
+    }
+
+    .section:nth-child(even) {
+        background: $dark-mode-card-bg;
+    }
+
+    .section-title {
+        color: $dark-mode-text;
+    }
+
+    .section-title::after {
+        @include gradient-primary; // Mantener el acento
+    }
+
+    .section-subtitle {
+        color: $dark-mode-light-text;
+    }
+
+    .footer {
+        background: $dark-mode-header-footer;
+        color: $dark-mode-text;
+    }
+
+    .footer-section h3,
+    .footer-section h4 {
+        color: $dark-mode-primary-light;
+    }
+
+    .footer-section p,
+    .footer-section ul li a {
+        color: $dark-mode-light-text;
+
+        &:hover {
+            color: $dark-mode-primary-light;
+        }
+    }
+
+    .social-links a {
+        background: $secondary-color; // Mantener el color de los iconos sociales
+        color: $white-color;
+
+        &:hover {
+            background: $dark-mode-primary-light;
+            color: $white-color;
+        }
+    }
+
+    .footer-bottom {
+        border-top-color: $dark-mode-border;
+        color: $dark-mode-light-text;
+    }
+
+    // Componentes específicos que necesitan modo oscuro
+    .card,
+    .destacado-card,
+    .stat-card,
+    .comentario-card,
+    .stat-satisfaccion,
+    .formulario-comentario,
+    .metodologia-item,
+    .curso-card,
+    .curso-especializado-card,
+    .contacto-container,
+    .contacto-info,
+    .contacto-item,
+    .contacto-form,
+    .mapa-placeholder,
+    .faq-item {
+        background: $dark-mode-card-bg;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        border-color: $dark-mode-border;
+
+        &:hover {
+            box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+        }
+    }
+
+    .card h3,
+    .destacado-card h3,
+    .stat-card .stat-label,
+    .comentario-header h4,
+    .comentario-card p,
+    .stat-satisfaccion .stat-label,
+    .formulario-comentario-container label,
+    .contacto-info h3,
+    .contacto-form h3,
+    .contacto-item h4,
+    .contacto-item p,
+    .instrucciones-ubicacion h3,
+    .faq-pregunta h3,
+    .faq-respuesta,
+    .curso-card h3,
+    .curso-especializado-card h3,
+    .curso-descripcion p,
+    .curso-temas li,
+    .curso-info {
+        color: $dark-mode-text;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background: $dark-mode-card-bg;
+        border-color: $dark-mode-border;
+        color: $dark-mode-text;
+
+        &:focus {
+            border-color: $dark-mode-primary-light;
+            box-shadow: 0 0 0 3px rgba($dark-mode-primary-light, 0.3);
+        }
+    }
+
+    .rating label {
+        color: $dark-mode-light-text;
+    }
+
+    .rating label:hover,
+    .rating label:hover ~ label,
+    .rating input:checked ~ label {
+        color: $star-color; // Mantener el color de las estrellas
+    }
+
+    .submit-btn,
+    .cta-button,
+    .curso-btn,
+    .btn-mapa {
+        background: $secondary-color; // Mantener el color del botón principal
+        box-shadow: 0 8px 25px rgba($secondary-color, 0.3);
+
+        &:hover {
+            background: color.adjust($secondary-color, $lightness: -10%);
+            box-shadow: 0 12px 35px rgba($secondary-color, 0.4);
+        }
+    }
+
+    .comentarios-hero {
+        background: $dark-mode-bg !important; // Cambiar a fondo negro en modo oscuro
+        color: $white-color;
+    }
+    .comentarios-hero p {
+        color: $white-color;
+    }
+
+    // Elementos adicionales para completar el modo oscuro
+    .hero {
+        background: $dark-mode-bg !important; // Cambiar a fondo negro en modo oscuro
+        color: $white-color;
+    }
+    
+    .hero h2,
+    .hero h3,
+    .hero-text {
+        color: $white-color;
+    }
+
+    .estudiante-info .universidad {
+        color: $dark-mode-primary-light;
+    }
+
+    .estudiante-info .promedio {
+        color: $dark-mode-primary-light;
+    }
+
+    .comentario-footer {
+        border-top-color: $dark-mode-border;
+        color: $dark-mode-light-text;
+    }
+
+    .instruccion-item i {
+        color: $dark-mode-primary-light;
+    }
+
+    .faq-pregunta:hover {
+        background-color: $dark-mode-card-bg;
+    }
+
+    // Corregir elementos que no cambian correctamente
+    .section-title {
+        color: $dark-mode-text !important;
+    }
+
+    .section-subtitle {
+        color: $dark-mode-light-text !important;
+    }
+
+    .card p,
+    .destacado-card p,
+    .curso-descripcion p,
+    .contacto-item p,
+    .comentario-card p,
+    .faq-respuesta {
+        color: $dark-mode-text !important;
+    }
+
+    .curso-temas li,
+    .curso-info,
+    .contacto-item h4,
+    .comentario-header h4 {
+        color: $dark-mode-text !important;
+    }
+
+    // Corregir fondos que se ven naranjas
+    .contacto-info,
+    .contacto-form {
+        background: $dark-mode-card-bg !important;
+    }
+
+    .formulario-comentario {
+        background: $dark-mode-card-bg !important;
+    }
+
+    // Asegurar que todos los textos sean visibles
+    h1, h2, h3, h4, h5, h6 {
+        color: $dark-mode-text !important;
+    }
+
+    p, span, div, li {
+        color: $dark-mode-text !important;
+    }
+
+    // Corregir elementos específicos que pueden verse transparentes
+    .estudiante-info .universidad,
+    .estudiante-info .promedio {
+        color: $dark-mode-primary-light !important;
+    }
+
+    .comentario-footer {
+        color: $dark-mode-light-text !important;
+        border-top-color: $dark-mode-border !important;
+    }
+}

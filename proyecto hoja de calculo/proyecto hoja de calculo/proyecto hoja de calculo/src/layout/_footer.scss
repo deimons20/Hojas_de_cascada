@@ -1,0 +1,91 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+/* ===== FOOTER ===== */
+.footer {
+    grid-area: footer;
+    background: $dark-bg;
+    color: $white-color;
+    padding: $spacing-xl $spacing-lg $spacing-sm;
+    transition: background-color 0.3s ease, color 0.3s ease; // Transición para modo oscuro
+
+    &-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: $spacing-lg;
+        margin-bottom: $spacing-lg;
+    }
+
+    &-section {
+        h3, h4 {
+            margin-bottom: $spacing-sm;
+            color: $primary-color;
+            transition: color 0.3s ease; // Transición para modo oscuro
+        }
+
+        p {
+            margin-bottom: $spacing-xs;
+            color: #bdc3c7;
+            transition: color 0.3s ease; // Transición para modo oscuro
+        }
+
+        ul {
+            list-style: none;
+            li {
+                margin-bottom: $spacing-xs;
+                a {
+                    color: #bdc3c7;
+                    text-decoration: none;
+                    transition: $transition-base;
+
+                    &:hover {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &-bottom {
+        text-align: center;
+        padding-top: $spacing-lg;
+        border-top: 1px solid #34495e;
+        color: #bdc3c7;
+        transition: border-color 0.3s ease, color 0.3s ease; // Transición para modo oscuro
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: $spacing-sm;
+    margin-top: $spacing-sm;
+
+    a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background: $secondary-color;
+        color: $white-color;
+        @include flex-center;
+        border-radius: $border-radius-circle;
+        transition: $transition-base;
+
+        &:hover {
+            background: $primary-color;
+            color: $white-color;
+            transform: translateY(-2px);
+        }
+    }
+}
+
+/* ===== MEDIA QUERIES PARA FOOTER RESPONSIVO ===== */
+@media (max-width: $breakpoint-mobile) {
+    .footer {
+        padding: $spacing-lg $spacing-sm $spacing-sm;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}

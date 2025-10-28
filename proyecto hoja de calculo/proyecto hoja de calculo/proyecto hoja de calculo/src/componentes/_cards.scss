@@ -1,0 +1,133 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+.card {
+    @include card-base;
+    flex: 1;
+    min-width: 250px;
+    max-width: 350px;
+
+    i {
+        font-size: 3rem;
+        color: $primary-color;
+        margin-bottom: $spacing-sm;
+    }
+}
+
+.destacado-card {
+    @include card-base;
+
+    i {
+        font-size: 3rem;
+        color: $primary-color;
+        margin-bottom: $spacing-sm;
+    }
+}
+
+.stat-card {
+    @include card-base;
+
+    .stat-number {
+        font-size: $font-size-h2;
+        font-weight: 700;
+        color: $primary-color;
+        margin-bottom: $spacing-xs;
+    }
+
+    .stat-label {
+        font-size: $font-size-md;
+        color: $light-text-color;
+    }
+}
+
+.comentario-card {
+    background: linear-gradient(145deg, $white-color 0%, #F8F9FA 100%);
+    padding: 2.5rem;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-lg;
+    transition: $transition-card;
+    animation: fadeInUp 0.6s ease-out;
+    border: 1px solid rgba($primary-color, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $primary-color 0%, $accent-color 100%);
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba($primary-color, 0.15);
+        border-color: rgba($primary-color, 0.3);
+    }
+
+    p {
+        color: $light-text-color;
+        font-style: italic;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        margin-bottom: $spacing-md;
+    }
+}
+
+.stat-satisfaccion {
+    background: linear-gradient(145deg, $white-color 0%, #F8F9FA 100%);
+    padding: 2.5rem;
+    border-radius: $border-radius-xl;
+    box-shadow: $shadow-lg;
+    text-align: center;
+    transition: $transition-card;
+    animation: fadeInUp 0.6s ease-out;
+    border: 1px solid rgba($primary-color, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $secondary-color 0%, #3B82F6 100%);
+    }
+
+    &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba($secondary-color, 0.15);
+        border-color: rgba($secondary-color, 0.3);
+
+        .stat-number {
+            animation: pulse 1s ease-in-out;
+        }
+    }
+
+    .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: $secondary-color;
+        margin-bottom: $spacing-xs;
+        text-shadow: 0 2px 4px rgba($secondary-color, 0.1);
+    }
+
+    .stat-label {
+        font-size: $font-size-md;
+        color: $light-text-color;
+        font-weight: 500;
+    }
+}
+
+.metodologia-item {
+    @include card-base;
+}
+
+.curso-card,
+.curso-especializado-card {
+    @include card-base;
+}

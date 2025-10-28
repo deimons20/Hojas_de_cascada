@@ -1,0 +1,26 @@
+/* ===== GRID LAYOUT PRINCIPAL - Usando grid-template-areas ===== */
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "main"
+        "footer";
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+.main-content {
+    grid-area: main;
+    margin-top: 80px; 
+}
+
+/* ===== SECCIONES ===== */
+.section {
+    padding: 4rem 2rem;
+}
+
+.section:nth-child(even) {
+    background: #f8f9fa;
+    transition: background-color 0.3s ease; // Transición para modo oscuro
+}

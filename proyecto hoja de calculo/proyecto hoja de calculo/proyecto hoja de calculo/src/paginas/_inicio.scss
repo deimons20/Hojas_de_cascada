@@ -1,0 +1,102 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+@import '../componentes/cards'; 
+
+/* ===== SECCIÓN HERO ===== */
+.hero {
+    text-align: center;
+    padding: $spacing-xxl 0;
+    @include gradient-primary;
+    color: $white-color;
+    margin: (-$spacing-xxl) (-$spacing-lg) $spacing-xxl (-$spacing-lg); 
+
+    h2 {
+        font-size: $font-size-h2;
+        margin-bottom: $spacing-sm;
+    }
+
+    h3 {
+        font-size: $font-size-h3;
+        margin-bottom: $spacing-md;
+        opacity: 0.9;
+    }
+
+    &-text {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-lg;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ===== TARJETAS DE INFORMACIÓN CON FLEXBOX ===== */
+.info-cards {
+    display: flex;
+    gap: $spacing-lg;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ===== SECCIÓN DESTACADOS ===== */
+.destacados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+}
+
+/* ===== SECCIÓN ESTADÍSTICAS ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+}
+
+/* ===== MEDIA QUERIES RESPONSIVAS PARA INICIO ===== */
+@media (max-width: $breakpoint-tablet) {
+    .hero {
+        h2 {
+            font-size: $font-size-h1;
+        }
+        h3 {
+            font-size: $font-size-lg;
+        }
+    }
+    
+    .info-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .card {
+        min-width: 100%;
+    }
+    
+    .destacados-grid,
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .hero {
+        padding: $spacing-lg 0;
+        margin: (-$spacing-lg) (-$spacing-sm) $spacing-lg (-$spacing-sm);
+        h2 {
+            font-size: $font-size-xxl;
+        }
+        h3 {
+            font-size: $font-size-base;
+        }
+        &-text {
+            font-size: $font-size-base;
+        }
+    }
+    
+    .destacados-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

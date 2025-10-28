@@ -1,0 +1,191 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+@import '../componentes/cards'; 
+
+/* ===== SECCIÓN CURSOS CON GRID LAYOUT ===== */
+.cursos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+}
+
+.curso-card {
+    &-icon {
+        width: 80px;
+        height: 80px;
+        @include gradient-primary;
+        border-radius: $border-radius-circle;
+        @include flex-center;
+        margin: 0 auto $spacing-md;
+
+        i {
+            font-size: $spacing-lg;
+            color: $white-color;
+        }
+    }
+
+    h3 {
+        font-size: $font-size-xxl;
+        margin-bottom: $spacing-sm;
+    }
+
+    &-descripcion {
+        margin-bottom: $spacing-md;
+        p {
+            color: $light-text-color;
+            line-height: 1.6;
+        }
+    }
+
+    &-temas {
+        list-style: none;
+        margin-bottom: $spacing-lg;
+        text-align: left;
+
+        li {
+            padding: $spacing-xs 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: $spacing-md;
+
+            &:before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: $primary-color;
+                font-weight: bold;
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    &-info {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $spacing-lg;
+        font-size: $font-size-sm;
+        color: $light-text-color;
+
+        &-duracion,
+        &-horarios {
+            display: flex;
+            align-items: center;
+            gap: $spacing-xs;
+        }
+    }
+}
+
+/* ===== CURSOS ESPECIALIZADOS ===== */
+.cursos-especializados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+}
+
+.curso-especializado-card {
+    &-icon {
+        width: 80px;
+        height: 80px;
+        @include gradient-primary;
+        border-radius: $border-radius-circle;
+        @include flex-center;
+        margin: 0 auto $spacing-md;
+
+        i {
+            font-size: $spacing-lg;
+            color: $white-color;
+        }
+    }
+
+    h3 {
+        font-size: $font-size-xxl;
+        margin-bottom: $spacing-sm;
+    }
+
+    ul {
+        list-style: none;
+        margin: $spacing-md 0;
+        text-align: left;
+
+        li {
+            padding: $spacing-xs 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: $spacing-md;
+
+            &:before {
+                content: '✓';
+                position: absolute;
+                left: 0;
+                color: $primary-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+/* ===== METODOLOGÍA ===== */
+.metodologia-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-lg;
+}
+
+.metodologia-item {
+    &-icon {
+        width: 80px;
+        height: 80px;
+        @include gradient-primary;
+        border-radius: $border-radius-circle;
+        @include flex-center;
+        margin: 0 auto $spacing-md;
+
+        i {
+            font-size: $spacing-lg;
+            color: $white-color;
+        }
+    }
+
+    h3 {
+        font-size: $font-size-xl;
+        margin-bottom: $spacing-sm;
+    }
+}
+
+/* ===== MEDIA QUERIES RESPONSIVAS PARA CURSOS ===== */
+@media (max-width: $breakpoint-tablet) {
+    .cursos-grid,
+    .cursos-especializados-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .metodologia-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .cursos-grid,
+    .cursos-especializados-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .curso-card,
+    .curso-especializado-card {
+        padding: $spacing-md;
+    }
+    
+    .metodologia-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .curso-info {
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+}

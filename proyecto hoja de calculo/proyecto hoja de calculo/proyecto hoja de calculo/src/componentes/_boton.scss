@@ -1,0 +1,86 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+.cta-button {
+    display: inline-block;
+    @include gradient-secondary;
+    color: $white-color;
+    padding: $spacing-sm $spacing-lg;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: $transition-base;
+    box-shadow: $shadow-button;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: $shadow-button-hover;
+    }
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}
+
+.submit-btn {
+    @include gradient-secondary;
+    color: $white-color;
+    padding: $font-size-lg $font-size-h1;
+    border: none;
+    border-radius: 50px;
+    font-size: $font-size-md;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition-base;
+    width: 100%;
+    box-shadow: $shadow-button;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: $shadow-button-hover;
+    }
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}
+
+.curso-btn {
+    display: inline-block;
+    background: $secondary-color;
+    color: $white-color;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($secondary-color, 0.4);
+    }
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}
+
+.btn-mapa {
+    display: inline-block;
+    background: $secondary-color;
+    color: $white-color;
+    padding: $spacing-sm $spacing-lg;
+    text-decoration: none;
+    border-radius: 25px;
+    margin-top: $spacing-sm;
+    transition: $transition-base;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba($secondary-color, 0.4);
+    }
+    &:focus {
+        outline: 2px solid $primary-color;
+        outline-offset: 2px;
+    }
+}

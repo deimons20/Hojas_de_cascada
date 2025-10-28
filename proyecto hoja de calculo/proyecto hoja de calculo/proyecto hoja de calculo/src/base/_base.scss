@@ -1,0 +1,79 @@
+@import '../abstract/variables';
+
+/* ===== RESET Y CONFIGURACIÓN BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $font-family-base;
+    line-height: 1.6;
+    color: $text-color;
+    background: $light-bg; // Fondo claro por defecto
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; // Transición para modo oscuro
+}
+
+/* ===== UTILIDADES ===== */
+.text-center {
+    text-align: center;
+}
+
+.mb-2 {
+    margin-bottom: $spacing-lg;
+}
+
+.mt-2 {
+    margin-top: $spacing-lg;
+}
+
+/* ===== ANIMACIONES Y EFECTOS ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ===== IMPRESIÓN ===== */
+@media print {
+    .header,
+    .footer,
+    .menu-toggle,
+    .dark-mode-toggle { 
+        display: none;
+    }
+    
+    .main-content {
+        margin-top: 0;
+    }
+    
+    .section {
+        page-break-inside: avoid;
+    }
+}
+

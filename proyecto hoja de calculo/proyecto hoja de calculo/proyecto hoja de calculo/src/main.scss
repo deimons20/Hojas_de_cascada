@@ -1,0 +1,23 @@
+
+@import 'abstract/variables';
+@import 'abstract/mixins';
+
+@import 'base/base';
+@import 'base/tipografia';  
+
+@import 'layout/grid';
+@import 'layout/header';
+@import 'layout/footer';
+
+@import 'componentes/boton';  
+@import 'componentes/cards';
+
+@import 'paginas/inicio';  
+@import 'paginas/cursos';
+@import 'paginas/contacto';
+@import 'paginas/comentarios';  
+
+// Modo oscuro (llama al mixin de _mixins.scss)
+body.dark-mode {
+    @include dark-mode;
+}

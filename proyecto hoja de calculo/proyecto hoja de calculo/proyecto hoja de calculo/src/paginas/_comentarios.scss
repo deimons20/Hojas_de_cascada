@@ -1,0 +1,296 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+@import '../componentes/cards'; 
+@import '../componentes/boton'; 
+
+/* ===== SECCIÓN HERO PARA COMENTARIOS ===== */
+.comentarios-hero {
+    text-align: center;
+    padding: $spacing-xxl 0;
+    @include gradient-primary;
+    color: $white-color;
+    margin: (-$spacing-xxl) (-$spacing-lg) $spacing-xxl (-$spacing-lg);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    }
+
+    h2 {
+        font-size: 3.5rem;
+        margin-bottom: $spacing-sm;
+        position: relative;
+        z-index: 1;
+    }
+
+    p {
+        font-size: $font-size-lg;
+        margin-bottom: $spacing-lg;
+        opacity: 0.95;
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* ===== SECCIÓN COMENTARIOS CON GRID LAYOUT ===== */
+.comentarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-top: $spacing-lg;
+}
+
+.comentario-header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    .avatar {
+        font-size: 3.5rem;
+        color: $primary-color;
+        @include flex-center;
+        margin: 0 auto;
+    }
+
+    h4 {
+        font-size: $font-size-h4;
+        color: $text-color;
+        margin-bottom: $spacing-xs;
+        font-weight: 600;
+    }
+}
+
+.estudiante-info {
+    margin-bottom: 0.8rem;
+
+    .universidad {
+        display: block;
+        font-weight: 600;
+        color: $secondary-color;
+        font-size: $font-size-base;
+        margin-bottom: 0.3rem;
+    }
+
+    .promedio {
+        display: block;
+        color: $primary-color;
+        font-size: $font-size-sm;
+        font-weight: 500;
+    }
+}
+
+.stars {
+    color: $star-color;
+    font-size: $font-size-md;
+
+    i {
+        margin-right: 0.2rem;
+        filter: drop-shadow($shadow-star);
+    }
+}
+
+.comentario-footer {
+    margin-top: $spacing-md;
+    padding-top: $spacing-md;
+    border-top: 2px solid rgba($primary-color, 0.1);
+    display: flex;
+    justify-content: space-between;
+    font-size: $font-size-sm;
+    color: $lighter-text-color;
+}
+
+/* ===== ESTADÍSTICAS DE SATISFACCIÓN ===== */
+.stats-satisfaccion-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: $spacing-lg;
+    margin-top: $spacing-xl;
+}
+
+/* ===== FORMULARIO DE COMENTARIO ===== */
+.formulario-comentario-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.formulario-comentario {
+    background: linear-gradient(145deg, $white-color 0%, #F8F9FA 100%);
+    padding: $spacing-xl;
+    border-radius: 25px;
+    box-shadow: $shadow-xl;
+    border: 1px solid rgba($primary-color, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, $primary-color 0%, $accent-color 100%);
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+}
+
+.form-group {
+    margin-bottom: $spacing-md;
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: $font-size-lg;
+        border: 2px solid #E5E7EB;
+        border-radius: 12px;
+        font-size: $font-size-base;
+        transition: $transition-base;
+        font-family: inherit;
+        background: $white-color;
+
+        &:focus {
+            outline: none;
+            border-color: $primary-color;
+            box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+            transform: translateY(-2px);
+        }
+    }
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    label {
+        font-weight: 600;
+        color: $text-color;
+        font-size: $font-size-md;
+    }
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.3rem;
+
+    input {
+        display: none;
+    }
+
+    label {
+        cursor: pointer;
+        font-size: $spacing-lg;
+        color: #E5E7EB;
+        transition: $transition-base;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+
+        &:hover,
+        &:hover ~ label,
+        input:checked ~ label {
+            color: $star-color;
+            transform: scale(1.1);
+            filter: drop-shadow($shadow-star-hover);
+        }
+        &:focus {
+            outline: 2px solid $primary-color;
+            outline-offset: 2px;
+        }
+    }
+}
+
+/* ===== MEDIA QUERIES RESPONSIVAS PARA COMENTARIOS ===== */
+@media (max-width: $breakpoint-tablet) {
+    .comentarios-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: $spacing-lg;
+    }
+    
+    .stats-satisfaccion-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: $spacing-md;
+    }
+    
+    .comentarios-hero {
+        h2 {
+            font-size: $font-size-h1;
+        }
+        p {
+            font-size: $font-size-md;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .comentarios-grid {
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+    }
+    
+    .comentario-card {
+        padding: $spacing-lg;
+    }
+    
+    .comentario-header {
+        flex-direction: column;
+        text-align: center;
+        gap: $spacing-sm;
+    }
+    
+    .avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .stats-satisfaccion-grid {
+        grid-template-columns: 1fr;
+        gap: $spacing-md;
+    }
+    
+    .stat-satisfaccion {
+        padding: $spacing-lg;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: $spacing-sm;
+    }
+    
+    .formulario-comentario {
+        padding: $spacing-lg;
+    }
+    
+    .comentario-footer {
+        flex-direction: column;
+        gap: $spacing-xs;
+        text-align: center;
+    }
+    
+    .comentarios-hero {
+        h2 {
+            font-size: $font-size-xxl;
+        }
+        p {
+            font-size: $font-size-base;
+        }
+    }
+}

@@ -1,0 +1,149 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+/* ===== HEADER CON GRID LAYOUT ===== */
+.header {
+    grid-area: header;
+    @include gradient-primary;
+    padding: $spacing-sm $spacing-lg;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: $shadow-sm;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: $spacing-lg;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; // Transición para modo oscuro
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $white-color;
+    transition: color 0.3s ease; // Transición para modo oscuro
+
+    &-img {
+        width: 50px;
+        height: 50px;
+        border-radius: $border-radius-circle;
+        object-fit: cover;
+        border: 2px solid rgba($white-color, 0.3);
+    }
+
+    h1 {
+        font-size: $font-size-xl;
+        font-weight: 700;
+    }
+}
+
+/* ===== NAVEGACIÓN CON FLEXBOX ===== */
+.nav {
+    justify-self: center;
+
+    &-list {
+        display: flex;
+        list-style: none;
+        gap: $spacing-lg;
+    }
+
+    &-link {
+        color: $white-color;
+        text-decoration: none;
+        font-weight: 500;
+        transition: $transition-base;
+        padding: 0.8rem $spacing-md;
+        border-radius: $border-radius-sm;
+        font-size: $font-size-md;
+
+        &:hover {
+            color: $white-color;
+            background: rgba($white-color, 0.2);
+        }
+        &.active {
+            color: $white-color;
+            background: rgba($white-color, 0.3);
+            font-weight: 600;
+        }
+        &:focus {
+            outline: 2px solid $primary-color;
+            outline-offset: 2px;
+        }
+    }
+}
+
+/* Menú hamburguesa */
+.menu-toggle {
+    display: none;
+    color: $white-color;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    transition: color 0.3s ease; // Transición para modo oscuro
+}
+
+/* Dark Mode Toggle */
+.dark-mode-toggle {
+    color: $white-color;
+    font-size: $font-size-xl;
+    cursor: pointer;
+    margin-left: $spacing-md;
+    transition: color 0.3s ease; // Transición para modo oscuro
+
+    &:hover {
+        color: $star-color;
+    }
+}
+
+/* ===== MEDIA QUERIES PARA HEADER RESPONSIVO ===== */
+@media (max-width: $breakpoint-tablet) {
+    .header {
+        grid-template-columns: auto auto;
+        gap: $spacing-sm;
+    }
+    
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: $secondary-color; 
+        padding: $spacing-sm;
+    }
+    
+    .nav.active {
+        display: block;
+    }
+    
+    .nav-list {
+        flex-direction: column;
+        gap: $spacing-sm;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+
+    .dark-mode-toggle {
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .header {
+        padding: $spacing-sm;
+    }
+    
+    .logo h1 {
+        font-size: $font-size-lg;
+    }
+    
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+}
